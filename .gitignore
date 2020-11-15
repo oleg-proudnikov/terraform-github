@@ -1,0 +1,7 @@
+**/*.tfstate*
+.terraform
+.idea
+.git
+/plan.out
+/*.iml
+
