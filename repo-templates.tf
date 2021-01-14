@@ -3,6 +3,7 @@ module "basic_repo" {
 
   name                = "basic-repo"
   description         = "Common content for all repositories"
+  is_private          = false
   is_template         = true
   is_strict           = false
   is_branch_protected = false
@@ -43,6 +44,25 @@ module "java_spring" {
   "maven"]
   template_owner = var.owner
   template_repo  = module.basic_java.name
+}
+
+module "java_spring_kafka" {
+  source = "./modules/repo"
+
+  name        = "java-spring-kafka"
+  description = "Basic Java Spring 2 project with Kafka"
+  is_private  = false
+  is_template = true
+  topics = [
+    "managed",
+    "java",
+    "spring",
+    "lombok",
+    "kafka",
+    "junit5",
+  "maven"]
+  template_owner = var.owner
+  template_repo  = module.java_spring.name
 }
 
 resource "github_repository_file" "basic_repo_gitignore" {
