@@ -38,6 +38,7 @@ module "java_spring" {
     "managed",
     "java",
     "spring",
+    "lombok",
     "junit5",
   "maven"]
   template_owner = var.owner
