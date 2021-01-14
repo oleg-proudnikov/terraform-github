@@ -27,6 +27,23 @@ module "basic_java" {
   template_repo  = module.basic_repo.name
 }
 
+module "java_spring" {
+  source = "./modules/repo"
+
+  name        = "java-spring"
+  description = "Basic Java Spring 2 project with Maven, Mockito, JUnit 5"
+  is_private  = false
+  is_template = true
+  topics = [
+    "managed",
+    "java",
+    "spring",
+    "junit5",
+  "maven"]
+  template_owner = var.owner
+  template_repo  = module.basic_java.name
+}
+
 resource "github_repository_file" "basic_repo_gitignore" {
   repository = module.basic_repo.name
   file       = ".gitignore"

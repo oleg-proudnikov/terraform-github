@@ -2,8 +2,6 @@ resource "github_repository" "this" {
   name = var.name
   description = var.description
 
-  default_branch = "main"
-
   visibility = var.is_private ? "private" : "public"
   is_template = var.is_template
   has_wiki = true
@@ -23,6 +21,11 @@ resource "github_repository" "this" {
       repository = var.template_repo
     }
   }
+}
+
+resource "github_branch_default" "this" {
+  repository = github_repository.this.name
+  branch     = "main"
 }
 
 resource "github_branch_protection" "this" {
