@@ -42,3 +42,14 @@ module "java_networking" {
   template_repo  = "basic-java"
 }
 
+module "helm" {
+  source = "./modules/repo"
+
+  name        = "helm-chart"
+  description = "Experiments with a Helm Chart"
+  is_private  = false
+  topics = ["managed", "helm"]
+  template_owner = var.owner
+  template_repo  = "basic-repo"
+}
+
